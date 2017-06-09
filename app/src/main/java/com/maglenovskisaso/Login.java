@@ -1,9 +1,14 @@
 package com.maglenovskisaso;
 
+import android.app.Notification;
+import android.app.NotificationManager;
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.media.RingtoneManager;
+import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v4.app.NotificationCompat;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -16,6 +21,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.google.firebase.messaging.FirebaseMessaging;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -35,7 +41,7 @@ public class Login extends AppCompatActivity {
         username = (EditText)findViewById(R.id.username);
         password = (EditText)findViewById(R.id.password);
         loginButton = (Button)findViewById(R.id.loginButton);
-
+        FirebaseMessaging.getInstance().subscribeToTopic("Online");
         register.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -104,4 +110,6 @@ public class Login extends AppCompatActivity {
             }
         });
     }
+
+
 }
